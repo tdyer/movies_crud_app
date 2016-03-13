@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  # Route a HTTP Request for all movies to the
+  # MoviesController index action
+  get '/movies', to: 'movies#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
