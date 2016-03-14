@@ -56,6 +56,29 @@ class MoviesController < ApplicationController
     end
   end
 
+  # GET /movies/:id/edit
+  def edit
+    # Find the movie to update
+    @movie = Movie.find(params[:id])
+  end
+
+  # PATCH /movies/:id
+  def update
+    # Find the movie to update
+    @movie = Movie.find(params[:id])
+
+    respond_to do |format|
+
+      if @movie.update(movie_params)
+        format.html { redirect_to movie_path(@movie), notice: 'Successfully updated the movie' }
+        format.json { render :show, status: :ok, location: movie_path(@movie) }
+      else
+        format.html { render :edit } # show the edit form again
+        format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   # Enforces strong parameter. Limit what attributes/columns can be set in the

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # MoviesController new action
   get '/movies/new', to: 'movies#new'
 
+  # Route a to generate a HTML form to edit a movie.
+  # MoviesController edit action
+  get '/movies/:id/edit', to: 'movies#edit'
+
   # Route a HTTP GET Request for one movie to the
   # MoviesController show action
   get '/movies/:id', to: 'movies#show', as: 'movie'
@@ -15,6 +19,10 @@ Rails.application.routes.draw do
   # Route a HTTP POST Request for movies to the
   # MoviesController create action.
   post '/movies', to: 'movies#create'
+
+  # Route a HTTP PATCH Request for movies to the
+  # MoviesController update action.
+  patch '/movies/:id', to: 'movies#update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
