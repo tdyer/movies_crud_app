@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  # Route a HTTP Request for all movies to the
+  # Route a HTTP GET Request for all movies to the
   # MoviesController index action
   get '/movies', to: 'movies#index'
+
+  # Route a HTTP GET Request for one movie to the
+  # MoviesController show action
+  get '/movies/:id', to: 'movies#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
