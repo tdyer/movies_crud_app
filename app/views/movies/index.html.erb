@@ -1,5 +1,5 @@
 <ul>
   <% @movies.each do |movie| %>
-  <li><%= movie.name %></li>
+  <li><%= movie.name %> | <%= link_to("Show", movie_path(movie.id)) %></li>
   <% end %>
 </ul>
