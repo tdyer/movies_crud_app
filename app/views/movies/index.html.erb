@@ -1,5 +1,11 @@
 <ul>
   <% @movies.each do |movie| %>
-  <li><%= movie.name %> | <%= link_to("Show", movie_path(movie.id)) %></li>
+  <li><%= movie.name %>
+    | <%= link_to("Show", movie_path(movie.id)) %>
+    | <%= link_to "Edit", edit_movie_path(movie.id) %>
+    | <%= link_to 'Destroy', movie_path(movie.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
   <% end %>
+  <hr/><br/>
+  <%= link_to "Create a New Movie", new_movie_path %>
 </ul>
