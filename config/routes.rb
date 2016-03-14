@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   # Route a to generate a HTML form to create a movie.
   # MoviesController new action
-  get '/movies/new', to: 'movies#new'
+  get '/movies/new', to: 'movies#new', as: 'new_movie'
 
   # Route a to generate a HTML form to edit a movie.
   # MoviesController edit action
-  get '/movies/:id/edit', to: 'movies#edit'
+  get '/movies/:id/edit', to: 'movies#edit', as: 'edit_movie'
 
   # Route a HTTP GET Request for one movie to the
   # MoviesController show action
