@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   # MoviesController update action.
   patch '/movies/:id', to: 'movies#update'
 
+  # Route a HTTP DELETE Request for movies to the
+  # MoviesController destroy action.
+  delete '/movies/:id', to: 'movies#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

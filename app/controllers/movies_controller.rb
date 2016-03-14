@@ -79,6 +79,17 @@ class MoviesController < ApplicationController
     end
   end
 
+  # DELETE /movies/:id
+  def destroy
+    @movie = Movie.find(params[:id])
+
+    @movie.destroy
+    respond_to do |format|
+      format.html { redirect_to movies_url, notice: "You deleted a Movie"}
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   # Enforces strong parameter. Limit what attributes/columns can be set in the
