@@ -1,5 +1,9 @@
 class MoviesController < ApplicationController
 
+  # Use a before action to reduce duplicate code in the below actions.
+  # Specifically, getting the Movie by id from the DB.
+  before_action :set_movie, only: [:show, :edit, :update, :delete]
+
   # GET /movies
   def index
     # create an instance variable, @movies, that
@@ -16,8 +20,6 @@ class MoviesController < ApplicationController
 
   # GET /movies/:id
   def show
-    @movie = Movie.find(params[:id])
-
     # Handle multiple representations, (html, json, ...)
     # By default render HTML representation
     respond_to do |format|
@@ -58,15 +60,10 @@ class MoviesController < ApplicationController
 
   # GET /movies/:id/edit
   def edit
-    # Find the movie to update
-    @movie = Movie.find(params[:id])
   end
 
   # PATCH /movies/:id
   def update
-    # Find the movie to update
-    @movie = Movie.find(params[:id])
-
     respond_to do |format|
 
       if @movie.update(movie_params)
@@ -81,8 +78,6 @@ class MoviesController < ApplicationController
 
   # DELETE /movies/:id
   def destroy
-    @movie = Movie.find(params[:id])
-
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to movies_url, notice: "You deleted a Movie"}
@@ -91,6 +86,11 @@ class MoviesController < ApplicationController
   end
 
   private
+
+  # Used by multiple actions above.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
   # Enforces strong parameter. Limit what attributes/columns can be set in the
   # movies table.
