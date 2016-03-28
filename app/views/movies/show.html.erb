@@ -10,3 +10,11 @@
   <dt>Year Released:</dt>
   <dd><%= @movie.released_year %></dd>
 </dl>
+
+<p>
+  <%= @movie.name %> has
+  <%= link_to_unless(@movie.reviews.empty?, "#{@movie.reviews.size} reviews", movie_reviews_path(@movie.id)) do
+      "no reviews"
+   end
+  %>
+</p>

@@ -1,32 +1,38 @@
 Rails.application.routes.draw do
 
+
+  resources :movies do
+    # The review resource is nested inside the movie resource
+    resources :reviews
+  end
+
   # Route a HTTP GET Request for all movies to the
   # MoviesController index action
-  get '/movies', to: 'movies#index'
+  # get '/movies', to: 'movies#index'
 
   # Route a to generate a HTML form to create a movie.
   # MoviesController new action
-  get '/movies/new', to: 'movies#new', as: 'new_movie'
+  # get '/movies/new', to: 'movies#new', as: 'new_movie'
 
   # Route a to generate a HTML form to edit a movie.
   # MoviesController edit action
-  get '/movies/:id/edit', to: 'movies#edit', as: 'edit_movie'
+  # get '/movies/:id/edit', to: 'movies#edit', as: 'edit_movie'
 
   # Route a HTTP GET Request for one movie to the
   # MoviesController show action
-  get '/movies/:id', to: 'movies#show', as: 'movie'
+  # get '/movies/:id', to: 'movies#show', as: 'movie'
 
   # Route a HTTP POST Request for movies to the
   # MoviesController create action.
-  post '/movies', to: 'movies#create'
+  # post '/movies', to: 'movies#create'
 
   # Route a HTTP PATCH Request for movies to the
   # MoviesController update action.
-  patch '/movies/:id', to: 'movies#update'
+  # patch '/movies/:id', to: 'movies#update'
 
   # Route a HTTP DELETE Request for movies to the
   # MoviesController destroy action.
-  delete '/movies/:id', to: 'movies#destroy'
+  # delete '/movies/:id', to: 'movies#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
