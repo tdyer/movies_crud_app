@@ -1,0 +1,34 @@
+<!-- Helper to generate a HTML Form -->
+<%= form_for([@movie, @review]) do |f| %>
+
+<% if @review.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@review.errors.count, "error") %> prohibited this movie from b\
+    eing saved:</h2>
+
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<fieldset>
+  <ul>
+    <li>
+      <!-- Helpers to generate a email field for the user creating the review -->
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </li>
+    <li>
+      <!-- Helper to generate a text area for the review content -->
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </li>
+  </ul>
+  <p>
+    <%= f.submit %><br/>
+  </p>
+</fieldset>
+<% end %>
