@@ -17,6 +17,6 @@ m2.reviews.create!(content: 'Great fun', email: 'moe@foo.com')
 m1.reviews.create!(content: 'Boring, ho hum', email: 'larry@foo.com')
 m3.reviews.create!(content: 'Funny, ha', email: 'curly@foo.com')
 m2.reviews.create!(content: 'Action packed', email: 'larry@foo.com')
-m1.reviews.create!(content: 'Somber, yet interesting', email: 'curlyfoo.com')
+m1.reviews.create!(content: 'Somber, yet interesting', email: 'curly@foo.com')
 
 puts "Create a couple of movie reviews"
