@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # Root Path, /,  will show all movies.
+  root 'movies#index'
 
   resources :movies do
     # The review resource is nested inside the movie resource
