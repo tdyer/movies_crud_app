@@ -10,7 +10,7 @@
   <dt>Year Released:</dt>
   <dd><%= @movie.released_year %></dd>
 </dl>
-
+<hr/>
 <p>
   <%= @movie.name %> has
   <%= link_to_unless(@movie.reviews.empty?, "#{@movie.reviews.size} reviews", movie_reviews_path(@movie.id)) do
@@ -18,5 +18,10 @@
    end
   %>
 </p>
-
+<hr/>
 <p>Create a <%= link_to 'Review', new_movie_review_path(@movie.id) %></p>
+
+<hr/>
+<%= link_to 'All Movies', movies_path %>
+
+<hr/>
