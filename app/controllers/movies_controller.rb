@@ -1,5 +1,9 @@
 class MoviesController < ApplicationController
 
+  # Restrict access. Only signed in users can access the new/create,
+  # edit, create and delete actions.
+  before_action :authenticate_user!, except: [:index]
+
   # Use a before action to reduce duplicate code in the below actions.
   # Specifically, getting the Movie by id from the DB.
   before_action :set_movie, only: [:show, :edit, :update, :delete]
