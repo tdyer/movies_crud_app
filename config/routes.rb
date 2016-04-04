@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # Root Path, /,  will show all movies.
   root 'movies#index'
 
