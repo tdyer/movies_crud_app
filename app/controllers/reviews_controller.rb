@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   # Restrict access. Only signed in users can access actions
-  before_action :authenticate_user!, except: [:index]
+  #before_action :authenticate_user!
 
   # set the @movie instance variable before each action
   before_action :set_movie
