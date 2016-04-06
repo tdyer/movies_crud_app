@@ -14,21 +14,20 @@ m3 = Movie.create!(name: 'Rushmore', rating: 'PG-13', desc: 'Quirky humor', leng
 
 puts "Created three Movies"
 
-# Create a couple of movie reviews
-m2.reviews.create!(content: 'Great fun', email: 'moe@foo.com')
-m1.reviews.create!(content: 'Boring, ho hum', email: 'larry@foo.com')
-m3.reviews.create!(content: 'Funny, ha', email: 'curly@foo.com')
-m2.reviews.create!(content: 'Action packed', email: 'larry@foo.com')
-m1.reviews.create!(content: 'Somber, yet interesting', email: 'curly@foo.com')
-
-puts "Create a couple of movie reviews"
-
 moe = User.create!(email: 'moe@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Moe', last_name: 'Howard', admin: false)
 larry = User.create!(email: 'larry@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Larry', last_name: 'Fine', admin: false)
 curly = User.create!(email: 'curly@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Curly', last_name: 'Howard', admin: false)
-
 
 # Create an admin user
 tom = User.create!(email: 'tom@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Tom', last_name: 'Jones', admin: true)
 
 puts 'Created a couple of Users'
+
+# Create a couple of movie reviews
+m2.reviews.create!(content: 'Great fun', user: moe)
+m1.reviews.create!(content: 'Boring, ho hum', user: larry)
+m3.reviews.create!(content: 'Funny, ha', user: curly)
+m2.reviews.create!(content: 'Action packed', user: larry)
+m1.reviews.create!(content: 'Somber, yet interesting', user: curly)
+
+puts "Create a couple of movie reviews"
