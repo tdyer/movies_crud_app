@@ -2,6 +2,8 @@
 Review.delete_all
 Movie.delete_all
 
+User.delete_all
+
 # Create three movies
 # NOTE: the create! method will create a row in the movies table.
 # In this case the create! method will take one argument, a Hash of key/values
@@ -20,3 +22,13 @@ m2.reviews.create!(content: 'Action packed', email: 'larry@foo.com')
 m1.reviews.create!(content: 'Somber, yet interesting', email: 'curly@foo.com')
 
 puts "Create a couple of movie reviews"
+
+moe = User.create!(email: 'moe@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Moe', last_name: 'Howard', admin: false)
+larry = User.create!(email: 'larry@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Larry', last_name: 'Fine', admin: false)
+curly = User.create!(email: 'curly@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Curly', last_name: 'Howard', admin: false)
+
+
+# Create an admin user
+tom = User.create!(email: 'tom@foo.com', password: 'password', password_confirmation: 'password', first_name: 'Tom', last_name: 'Jones', admin: true)
+
+puts 'Created a couple of Users'
