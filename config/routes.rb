@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  # Generate routes for users. But, let Devise registration
+  # handle creating new users.
+  resources :users, except: [:new, :create]
+
   # Route a HTTP GET Request for all movies to the
   # MoviesController index action
   # get '/movies', to: 'movies#index'
