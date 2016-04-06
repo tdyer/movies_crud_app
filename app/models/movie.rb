@@ -17,6 +17,9 @@ class Movie < ActiveRecord::Base
   # The movie may have reviews
   has_many :reviews, dependent: :destroy
 
+  # The users that have reviewed movies
+  has_many :users, through: :reviews
+
   RATINGS = ['G', 'PG', 'PG-13', 'R', 'NC-17']
 
   # validate that this movie has a name

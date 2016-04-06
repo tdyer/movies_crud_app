@@ -11,6 +11,17 @@
   <dd><%= @movie.released_year %></dd>
 </dl>
 <hr/>
+
+<!-- Show the Users that have reviewed this movie -->
+<p>
+  <%= @movie.name %> been reviewed by
+  <% unless @movie.users.empty? %>
+    <%= @movie.users.uniq.map(&:full_name).join(', ') %>
+  <% else %>
+    no users.
+  <% end %>
+</p>
+
 <p>
   <%= @movie.name %> has
   <%= link_to_unless(@movie.reviews.empty?, "#{@movie.reviews.size} reviews", movie_reviews_path(@movie.id)) do

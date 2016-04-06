@@ -21,11 +21,12 @@
 </p>
 
 <!-- User movie reviews -->
+
 <p>
   Movie Reviews
   <ul>
     <% @user.reviews.each do |review| %>
-      <li><%= link_to('Review', movie_review_path(review.movie, review)) %> for <%= review.movie.name %> </li>
+      <li><%= link_to('Review', movie_review_path(review.movie, review)) %> for <%= review.movie.name %>, created <%= time_ago_in_words(review.created_at) %> ago</li>
     <% end %>
   </ul>
 </p>
