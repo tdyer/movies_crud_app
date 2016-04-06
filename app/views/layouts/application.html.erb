@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- Show logged in user and links to register, authenticate and log out -->
   <% if user_signed_in? %>
     <p>User <%= current_user.email %> is signed in </p>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
@@ -17,9 +18,11 @@
     <%= link_to "Sign Up", new_user_registration_path %>
   <% end %>
 
+  <!-- Show flash messages -->
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+  <% end -%>
 
-    <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
   <%= yield %>
 
 <footer>

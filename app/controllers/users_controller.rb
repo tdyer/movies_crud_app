@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  # The logged in user can only modify their account.
+  before_action :allow_user_modification, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -41,13 +45,23 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :admin)
+  # redirect to show all users unless the current user
+  # is the same as the user being modified,(updated or deleted)
+  def allow_user_modification
+    unless current_user.admin? || current_user && (current_user.id == @user.id)
+      flash[:error] = "#{current_user.email} can NOT modify the account for #{@user.email}"
+      redirect_to users_url
     end
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :admin)
+  end
 end
