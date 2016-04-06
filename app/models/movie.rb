@@ -15,7 +15,7 @@
 class Movie < ActiveRecord::Base
 
   # The movie may have reviews
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   RATINGS = ['G', 'PG', 'PG-13', 'R', 'NC-17']
 
