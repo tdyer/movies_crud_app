@@ -1,8 +1,5 @@
 class ReviewsController < ApplicationController
 
-  # Restrict access. Only signed in users can access actions
-  #before_action :authenticate_user!
-
   # set the @movie instance variable before each action
   before_action :set_movie
 
@@ -31,6 +28,9 @@ class ReviewsController < ApplicationController
     # the params hash will have the review attributes
     @review = @movie.reviews.new(review_params)
 
+    # Add the reviewer
+    @review.user = current_user
+
     if @review.save
       # Success, saved the movie review.
       redirect_to movie_reviews_path(@movie), notice: 'Created a Review'
@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :email)
+    params.require(:review).permit(:content)
   end
 
 end

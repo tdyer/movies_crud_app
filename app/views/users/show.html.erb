@@ -20,5 +20,15 @@
   <%= @user.admin %>
 </p>
 
+<!-- User movie reviews -->
+<p>
+  Movie Reviews
+  <ul>
+    <% @user.reviews.each do |review| %>
+      <li><%= link_to('Review', movie_review_path(review.movie, review)) %> for <%= review.movie.name %> </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
